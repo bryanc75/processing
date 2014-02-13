@@ -1,0 +1,30 @@
+// "What's black and white, and read all over?" 
+// Inspired by the old joke, I wanted to print the word "newspaper"
+// multiple times with a random fill of red to create an abstract
+// yet readable illustration.
+
+// define color palette of grays with one red.
+color[] newspaper = {#ffffff, #999999, #666666, #333333, #000000, #990000 };
+// to add variation to the patter, I'm randomizing the number of times the text appears
+int max = int(random(20,200));
+float counter = 0;
+
+void setup(){
+ size(800, 800);
+ background(newspaper[0]);
+}
+
+void draw(){
+ while(counter < max){
+   String t = "newspaper";
+   int size = int(random(10, 124)); 
+   textSize(size);
+   fill(newspaper[int(random(1, 6))]);
+   // by using the width of the text and size in the calc of 
+   // x & y, I'm able to keep the text within the bounds of the canvas
+   float x = random(50, width - textWidth(t));
+   float y = random(size, height - size);
+   text(t, x, y);
+   counter++;
+ }
+}
